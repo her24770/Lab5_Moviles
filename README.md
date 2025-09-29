@@ -5,6 +5,15 @@ Pokémon App - Android Studio con Jetpack Compose
 
 Esta aplicación de Android desarrollada en **Kotlin con Jetpack Compose** permite a los usuarios explorar una lista de los primeros 100 Pokémon obtenidos desde la API pública de [PokéAPI](https://pokeapi.co/). La app implementa navegación entre dos pantallas principales y consume datos de una API REST usando Retrofit.
 
+## Vistas
+
+###Listado 
+![85e816dc-f0c5-4eef-81f3-f39bd6cd5949](https://github.com/user-attachments/assets/7596183f-a64c-45d4-a223-9654af8fe1a0)
+
+###Imagenes por pokemón
+![3b80589f-808c-4dee-9525-9cee7d6a0f80](https://github.com/user-attachments/assets/267d829b-7415-4f12-946e-5606d24a57db)
+
+
 ## Funcionalidades Principales
 
 ### Pantalla Principal - Lista de Pokémon
@@ -62,3 +71,5 @@ app/src/main/java/com/example/lab5_moviles/
 │       └── Theme.kt                    # Configuración del tema
 
 ```
+
+
