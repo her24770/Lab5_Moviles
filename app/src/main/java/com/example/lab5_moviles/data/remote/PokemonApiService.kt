@@ -15,15 +15,4 @@ interface PokemonApiService {
     @GET("pokemon/{name}")
     suspend fun getPokemonDetail(@Path("name") name: String): PokemonDetail
 
-    companion object {
-        private const val BASE_URL = "https://pokeapi.co/api/v2/"
-
-        fun create(): PokemonApiService {
-            return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(PokemonApiService::class.java)
-        }
-    }
 }
