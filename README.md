@@ -8,7 +8,8 @@ Esta aplicación de Android desarrollada en **Kotlin con Jetpack Compose** permi
 ## Vistas
 
 ###Listado 
-![85e816dc-f0c5-4eef-81f3-f39bd6cd5949](https://github.com/user-attachments/assets/7596183f-a64c-45d4-a223-9654af8fe1a0)
+![429577cd-d454-4d23-b880-374c40fb72ef](https://github.com/user-attachments/assets/234933e2-33b0-4a57-863c-56f344f209a3)
+
 
 ###Imagenes por pokemón
 ![3b80589f-808c-4dee-9525-9cee7d6a0f80](https://github.com/user-attachments/assets/267d829b-7415-4f12-946e-5606d24a57db)
@@ -59,17 +60,37 @@ app/src/main/java/com/example/lab5_moviles/
 ├── data/
 │   ├── model/
 │   │   └── Pokemon.kt                  # Modelos de datos (DTOs)
+│   ├── repository/
+│   │   └── PokemonRepository.kt        # Repository - intermediario entre datos y ViewModel
 │   └── remote/
-│       └── PokemonApiService.kt        # Servicio Retrofit para API calls
+│       ├── PokemonApiService.kt        # Servicio Retrofit para API calls (sin companion object)
+│       └── RetrofitClient.kt           # Configuración centralizada de Retrofit
 ├── ui/
 │   ├── screen/
-│   │   ├── PokemonListScreen.kt        # Pantalla de lista
-│   │   └── PokemonDetailScreen.kt      # Pantalla de detalles
+│   │   ├── PokemonListScreen.kt        # Pantalla de lista (con StateFlow y manejo de errores)
+│   │   └── PokemonDetailScreen.kt      # Pantalla de detalles (con StateFlow)
 │   ├── viewmodel/
-│   │   └── PokemonViewModel.kt         # ViewModel para gestión de estado
+│   │   └── PokemonViewModel.kt         # ViewModel con StateFlow para gestión de estado
 │   └── theme/
 │       └── Theme.kt                    # Configuración del tema
-
 ```
 
+## Refactorización a MVVM con Clean Architecture
 
+### Cambios realizados
+- Implementación de arquitectura MVVM
+- Separación en capas: UI, ViewModel, Repository, Data
+
+### Estructura de capas
+1. **UI Layer** (`ui/`): Composables que observan StateFlow
+2. **ViewModel** (`ui/viewmodel/`): Maneja estado con StateFlow
+3. **Repository** (`data/repository/`): Intermediario entre API y ViewModel
+4. **Data Layer** (`data/remote/`): Retrofit + ApiService
+
+### Flujo de datos
+UI ← StateFlow ← ViewModel ← Repository ← Retrofit ← PokeAPI
+
+### Manejo de errores
+- Try-catch en Repository
+- StateFlow de error en ViewModel
+- Mensaje visible en UI cuando falla la conexión

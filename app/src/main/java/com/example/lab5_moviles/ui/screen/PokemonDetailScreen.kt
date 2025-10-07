@@ -25,8 +25,8 @@ fun PokemonDetailScreen(
     viewModel: PokemonViewModel,
     onBackClick: () -> Unit
 ) {
-    val pokemonDetail = viewModel.pokemonDetail.value
-    val isLoading = viewModel.isLoading.value
+    val pokemonDetail by viewModel.pokemonDetail.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
 
     LaunchedEffect(pokemonName) {
         viewModel.loadPokemonDetail(pokemonName)
@@ -51,7 +51,7 @@ fun PokemonDetailScreen(
                 }
             }
         )
-
+        // Mostrar el detalle del Pokémon
         if (isLoading) {
             Box(
                 modifier = Modifier.fillMaxSize(),
