@@ -32,7 +32,7 @@ class PokemonViewModel : ViewModel() {
     init {
         loadPokemonList()
     }
-
+    // Función para cargar la lista de Pokémon
     private fun loadPokemonList() {
         viewModelScope.launch {
             _isLoading.value = true
@@ -49,7 +49,7 @@ class PokemonViewModel : ViewModel() {
             _isLoading.value = false
         }
     }
-
+    // Función para cargar los detalles del Pokémon
     fun loadPokemonDetail(name: String) {
         viewModelScope.launch {
             _isLoading.value = true
@@ -65,10 +65,5 @@ class PokemonViewModel : ViewModel() {
 
             _isLoading.value = false
         }
-    }
-
-    // Función para limpiar errores (opcional, útil para la UI)
-    fun clearError() {
-        _error.value = null
     }
 }

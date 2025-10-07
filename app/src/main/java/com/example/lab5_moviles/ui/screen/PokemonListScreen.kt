@@ -24,10 +24,12 @@ fun PokemonListScreen(
     viewModel: PokemonViewModel,
     onPokemonClick: (String) -> Unit
 ) {
+    // Observar los cambios en la lista de Pokémon
     val pokemonList by viewModel.pokemonList.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val error by viewModel.error.collectAsState()
 
+    // Mostrar la lista de Pokémon
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -38,6 +40,7 @@ fun PokemonListScreen(
             modifier = Modifier.padding(top = 48.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
         )
 
+        // Mostrar el estado de carga o el error
         if (isLoading) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -81,6 +84,7 @@ fun PokemonListItem(
     val pokemonId = pokemon.url.split("/").dropLast(1).last()
     val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png"
 
+    // Mostrar el Pokémon con su imagen y nombre
     Card(
         modifier = Modifier
             .fillMaxWidth()

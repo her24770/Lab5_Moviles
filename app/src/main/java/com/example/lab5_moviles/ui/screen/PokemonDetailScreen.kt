@@ -51,7 +51,7 @@ fun PokemonDetailScreen(
                 }
             }
         )
-
+        // Mostrar el detalle del Pokémon
         if (isLoading) {
             Box(
                 modifier = Modifier.fillMaxSize(),

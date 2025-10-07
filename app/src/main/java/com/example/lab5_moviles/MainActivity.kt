@@ -40,10 +40,12 @@ fun PokemonApp() {
     val navController = rememberNavController()
     val viewModel: PokemonViewModel = viewModel()
 
+    // Configuración de navegación
     NavHost(
         navController = navController,
         startDestination = "pokemon_list"
     ) {
+        // Definición de pantallas
         composable("pokemon_list") {
             PokemonListScreen(
                 viewModel = viewModel,
@@ -52,7 +54,7 @@ fun PokemonApp() {
                 }
             )
         }
-
+        // Otra ruta para el detalle del Pokémon
         composable("pokemon_detail/{pokemonName}") { backStackEntry ->
             val pokemonName = backStackEntry.arguments?.getString("pokemonName") ?: ""
             PokemonDetailScreen(
